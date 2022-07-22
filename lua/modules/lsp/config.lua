@@ -32,19 +32,25 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
 require('lspconfig')['pyright'].setup{
+    capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
 }
 require('lspconfig')['tsserver'].setup{
+    capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
 }
 require('lspconfig')['rust_analyzer'].setup{
+    capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
@@ -52,4 +58,3 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
-

@@ -2,32 +2,26 @@ local Plug = require("utils.plug")
 
 Plug.begin()
     ---------------------------=== Language Server Config ===---------------------------
-    -- Neovim LSP configuration
+    -- Baseline LSP config
     Plug("neovim/nvim-lspconfig", {
-        config = function()
-            require("modules.lsp.config")
-        end
-    })
-    -- LSP Source for nvim-cmp
+            config = function()
+                require("modules.lsp.config")
+            end
+        })
+    -- Autocompletion plugin
+    Plug("hrsh7th/nvim-cmp", {
+            config = function()
+                require("modules.lsp.cmp")
+            end
+        }) 
+    -- LSP source for nvim-cmp
     Plug("hrsh7th/cmp-nvim-lsp")
     -- Snippets source for nvim-cmp
     Plug("saadparwaiz1/cmp_luasnip")
     -- Snippets plugin
     Plug("L3MON4D3/LuaSnip")
-    -- Signature Helper
+    -- Function signature help
     Plug("hrsh7th/cmp-nvim-lsp-signature-help")
-    -- Neovim Autocomplete
-    Plug("hrsh7th/nvim-cmp", {
-        config = function()
-            require("modules.lsp.cmp")
-        end
-    })
-    -- Neovim LS Hooks for format-on-save, etc.
-    Plug("jose-elias-alvarez/null-ls.nvim", {
-        config = function()
-            require("modules.lsp.null_ls")
-        end
-    })
     ---------------------------=== Tests ===---------------------------
     -- Utility for running tests
     Plug("vim-test/vim-test", {
