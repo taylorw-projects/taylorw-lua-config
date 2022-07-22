@@ -1,5 +1,6 @@
 -- Vim configuration hotkeys
 vim.keymap.set("n", "<leader>gV", ":e ~/.config/nvim/init.lua<cr>")
+vim.keymap.set("n", "<leader>gP", ":e ~/.config/nvim/lua/plugins.lua<cr>")
 vim.keymap.set("n", "<leader>gL", ":e ~/.config/nvim/lua<cr>")
 vim.keymap.set("n", "<leader>gN", ":e ~/.config/nvim<cr>")
 
