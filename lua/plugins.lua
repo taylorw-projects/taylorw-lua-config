@@ -16,6 +16,12 @@ Plug.begin()
         }) 
     -- LSP source for nvim-cmp
     Plug("hrsh7th/cmp-nvim-lsp")
+    -- Filesystem path completion for nvim-cmp
+    Plug("hrsh7th/cmp-path")
+    -- Command mode completions for nvim-cmp
+    Plug("hrsh7th/cmp-cmdline")
+    -- Buffer word completions for nvim-cmp
+    Plug("hrsh7th/cmp-buffer")
     -- Snippets source for nvim-cmp
     Plug("saadparwaiz1/cmp_luasnip")
     -- Snippets plugin
