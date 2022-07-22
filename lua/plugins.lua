@@ -38,6 +38,12 @@ Plug.begin()
     ---------------------------=== Utilities ===---------------------------
     -- Fuzzy file finder
     Plug("kien/ctrlp.vim")
+    -- Telescoping file finder
+    Plug("nvim-telescope/telescope.nvim", {
+            config = function()
+                require("modules.utilities.telescope")
+            end
+        })
     -- Utility for commenting lines
     Plug("scrooloose/nerdcommenter", {
         config = function()
