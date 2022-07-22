@@ -19,4 +19,3 @@ vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-W>k")
 vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-W>h")
 vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-W>l")
 vim.keymap.set("t", "<C-q>", "<C-\\><C-N><C-W>c")
-		
