@@ -89,11 +89,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("mofiqul/vscode.nvim", {
-	config = function()
-		vim.opt.termguicolors = true
-		vim.opt.background = "dark"
-		vim.cmd("colorscheme vscode")
-	end,
-})
+Plug("ellisonleao/gruvbox.nvim", {
+		config = function ()
+			vim.opt.termguicolors = true
+			vim.opt.background = "dark"
+			vim.cmd("colorscheme gruvbox")
+		end
+	})
 Plug.ends()
