@@ -12,3 +12,6 @@ vim.opt.expandtab = true
 -- Allow scrolling
 vim.opt.mouse = "a"
 
+-- Disable line wrapping
+vim.opt.wrap = false
+

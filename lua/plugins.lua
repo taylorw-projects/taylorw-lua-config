@@ -28,6 +28,15 @@ Plug("saadparwaiz1/cmp_luasnip")
 Plug("L3MON4D3/LuaSnip")
 -- Function signature help
 Plug("hrsh7th/cmp-nvim-lsp-signature-help")
+-- Multiline LSP diagnostics
+Plug("Maan2003/lsp_lines.nvim", {
+	config = function()
+		require("lsp_lines").setup()
+		vim.diagnostic.config({
+			virtual_text = false,
+		})
+	end,
+})
 ---------------------------=== Tests ===---------------------------
 -- Utility for running tests
 Plug("vim-test/vim-test", {
@@ -80,6 +89,12 @@ Plug("tpope/vim-fugitive")
 Plug("jiangmiao/auto-pairs")
 -- Async Lua support
 Plug("nvim-lua/plenary.nvim")
+-- Zen mode
+Plug("Pocco81/true-zen.nvim", {
+	config = function()
+		require("modules.utilities.truezen")
+	end
+})
 ---------------------------=== Language Specific ===---------------------------
 -- Rust crate support in cargo.toml
 Plug("saecki/crates.nvim", {
@@ -89,11 +104,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("shaunsingh/nord.nvim", {
-		config = function ()
-			vim.opt.termguicolors = true
-			vim.opt.background = "dark"
-			vim.cmd("colorscheme nord")
-		end
-	})
+Plug("ellisonleao/gruvbox.nvim", {
+	config = function()
+		vim.opt.termguicolors = true
+		vim.opt.background = "light"
+		vim.cmd("colorscheme gruvbox")
+	end
+})
 Plug.ends()

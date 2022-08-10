@@ -57,19 +57,29 @@ require("lspconfig")["rust_analyzer"].setup({
 		["rust-analyzer"] = {},
 	},
 })
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig").sumneko_lua.setup {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	flags = lsp_flags,
 	settings = {
 		Lua = {
-			diagnostics = {
-				globals = { "vim" },
+			runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+			completion = { keywordSnippet = "Disable", },
+			diagnostics = { enable = true, globals = {
+				"vim", "describe", "it", "before_each", "after_each"
 			},
-		},
-	},
-})
-require("lspconfig")["terraformls"].setup({
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				}
+			}
+		}
+	}
+}
+
+require("lspconfig")["terraform_lsp"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	flags = lsp_flags,
