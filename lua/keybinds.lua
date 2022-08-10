@@ -5,14 +5,17 @@ vim.keymap.set("n", "<leader>gL", ":e ~/.config/nvim/lua<cr>")
 vim.keymap.set("n", "<leader>gN", ":e ~/.config/nvim<cr>")
 
 -- New terminal in split
-vim.keymap.set("n", "<leader>gt", "<C-W>s<C-W>j:ter<cr>:resize 20<cr>:setlocal nonumber<cr>a")
-vim.keymap.set("n", "<leader>gT", "<C-W>v<C-W>l:ter<cr>:setlocal nonumber<cr>a")
+vim.keymap.set("n", "<C-w>t", "<C-W>s<C-W>j:ter<cr>:resize 20<cr>:setlocal nonumber<cr>a")
+vim.keymap.set("n", "<C-w>T", "<C-W>v<C-W>l:ter<cr>:setlocal nonumber<cr>a")
 
 -- pull up 3 windows
-vim.keymap.set("n", "<leader>g3", "<C-W>v<C-W>v")
+vim.keymap.set("n", "<C-w>3", "<C-W>v<C-W>v")
 
 -- pull up 4 windows
-vim.keymap.set("n", "<leader>g4", "<C-W>v<C-W>s<C-W>l<C-W>s<C-W>h")
+vim.keymap.set("n", "<C-w>4", "<C-W>v<C-W>s<C-W>l<C-W>s<C-W>h")
+
+-- go to last buffer
+vim.keymap.set("n", "<leader>gb", ":e ~/.config/nvim/init.lua<cr>")
 
 -- Remap window navigation
 vim.keymap.set("n", "<C-j>", "<C-W>j")

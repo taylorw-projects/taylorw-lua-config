@@ -95,6 +95,11 @@ Plug("Pocco81/true-zen.nvim", {
 		require("modules.utilities.truezen")
 	end
 })
+Plug("CRAG666/code_runner.nvim", {
+	config = function()
+		require("modules.utilities.coderunner")
+	end
+})
 ---------------------------=== Language Specific ===---------------------------
 -- Rust crate support in cargo.toml
 Plug("saecki/crates.nvim", {
@@ -104,11 +109,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("ellisonleao/gruvbox.nvim", {
+Plug("shaunsingh/nord.nvim", {
 	config = function()
 		vim.opt.termguicolors = true
-		vim.opt.background = "light"
-		vim.cmd("colorscheme gruvbox")
+		vim.opt.background = "dark"
+		vim.cmd("colorscheme nord")
 	end
 })
 Plug.ends()
