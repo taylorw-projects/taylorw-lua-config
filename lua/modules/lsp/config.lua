@@ -54,7 +54,11 @@ require("lspconfig")["rust_analyzer"].setup({
 	flags = lsp_flags,
 	-- Server-specific settings...
 	settings = {
-		["rust-analyzer"] = {},
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
 	},
 })
 require("lspconfig").sumneko_lua.setup {
@@ -78,7 +82,6 @@ require("lspconfig").sumneko_lua.setup {
 		}
 	}
 }
-
 require("lspconfig")["terraform_lsp"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,

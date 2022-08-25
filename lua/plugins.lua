@@ -32,6 +32,8 @@ Plug("hrsh7th/cmp-nvim-lsp-signature-help")
 Plug("weilbith/nvim-code-action-menu", {
     config = function()
         vim.g.code_action_menu_window_border = 'single'
+        vim.g.code_action_menu_show_diff = false
+        vim.g.code_action_menu_show_details = false
     end
 })
 ---------------------------=== TreeSitter ===---------------------------
@@ -42,9 +44,9 @@ Plug("nvim-treesitter/nvim-treesitter", {
 })
 ---------------------------=== Tests ===---------------------------
 -- Utility for running tests
-Plug("vim-test/vim-test", {
+Plug("klen/nvim-test", {
     config = function()
-        require("modules.tests.vim_test")
+        require("modules.tests.nvim_test")
     end,
 })
 ---------------------------=== Utilities ===---------------------------
@@ -107,11 +109,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("overcache/NeoSolarized", {
+Plug("luisiacc/gruvbox-baby", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd("colorscheme NeoSolarized")
+        vim.cmd([[colorscheme gruvbox-baby]])
     end
 })
 Plug.ends()
