@@ -65,16 +65,12 @@ Plug("scrooloose/nerdcommenter", {
     end,
 })
 -- File tree navigation
-Plug("scrooloose/nerdtree", {
+Plug("kyazdani42/nvim-tree.lua", {
     config = function()
-        require("modules.utilities.nerdtree")
+        require("modules.utilities.nvim_tree")
     end,
 })
--- Tree icons for NERDTree
-Plug("ryanoasis/vim-devicons")
--- Git support for NERDTree
-Plug("Xuyuanp/nerdtree-git-plugin")
--- Swap to beginning and end fo block with %
+-- Swap to beginning and end of block with %
 Plug("tmhedberg/matchit")
 -- Status bar
 Plug("vim-airline/vim-airline")
@@ -109,11 +105,12 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("luisiacc/gruvbox-baby", {
+Plug("shaunsingh/nord.nvim", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd([[colorscheme gruvbox-baby]])
+        vim.g.nord_italic = false
+        require("nord").set()
     end
 })
 Plug.ends()
