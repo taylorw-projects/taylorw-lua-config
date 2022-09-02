@@ -115,11 +115,12 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("navarasu/onedark.nvim", {
+Plug("shaunsingh/nord.nvim", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd [[colorscheme onedark]]
+        vim.g.nord_italic = false
+        require("nord").set()
     end
 })
 Plug.ends()
