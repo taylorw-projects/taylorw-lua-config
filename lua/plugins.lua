@@ -56,6 +56,12 @@ Plug("nvim-telescope/telescope.nvim", {
         require("modules.utilities.telescope")
     end,
 })
+-- File marker and navigator
+Plug("ThePrimeagen/harpoon", {
+    config = function()
+        require("modules.utilities.harpoon")
+    end
+})
 -- Utility for commenting lines
 Plug("scrooloose/nerdcommenter", {
     config = function()
@@ -105,12 +111,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("shaunsingh/nord.nvim", {
+Plug("navarasu/onedark.nvim", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.g.nord_italic = false
-        require("nord").set()
+        vim.cmd [[colorscheme onedark]]
     end
 })
 Plug.ends()

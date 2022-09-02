@@ -28,12 +28,6 @@ require('nvim-test').setup {
 }
 
 -- Set keymaps for nvim-test
-vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>", { silent = true })
-vim.keymap.set("n", "<leader>tT", ":TestFile<CR>", { silent = true })
-vim.keymap.set("n", "<leader>ta", ":TestSuite<CR>", { silent = true })
-vim.keymap.set("n", "<leader>tl", ":TestLast<CR>", { silent = true })
-
-
 vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>", {silent = true })
 vim.keymap.set("n", "<leader>tf", ":TestFile<CR>", {silent = true })
 vim.keymap.set("n", "<leader>te", ":TestEdit<CR>", {silent = true })
