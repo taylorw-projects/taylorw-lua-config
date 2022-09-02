@@ -101,7 +101,11 @@ Plug("CRAG666/code_runner.nvim", {
 -- Git integration
 Plug("tpope/vim-fugitive")
 -- Git changes in file
-Plug("airblade/vim-gitgutter")
+Plug("lewis6991/gitsigns.nvim", {
+    config = function()
+        require("modules.git.gitsigns")
+    end
+})
 ---------------------------=== Language Specific ===---------------------------
 -- Rust crate support in cargo.toml
 Plug("saecki/crates.nvim", {
