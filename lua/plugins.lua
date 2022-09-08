@@ -62,6 +62,8 @@ Plug("nvim-telescope/telescope.nvim", {
         require("modules.utilities.telescope")
     end,
 })
+-- Zoxide telescope plugin
+Plug("jvgrootveld/telescope-zoxide")
 -- File marker and navigator
 Plug("ThePrimeagen/harpoon", {
     config = function()
@@ -120,12 +122,13 @@ Plug("saecki/crates.nvim", {
     end,
 })
 ---------------------------=== Themes ===---------------------------
--- One dark theme and configuration
-Plug("sainnhe/gruvbox-material", {
+-- Nord theme and configuration
+Plug("shaunsingh/nord.nvim", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd [[colorscheme gruvbox-material]]
+        vim.g.nord_italic = false
+        require("nord").set()
     end
 })
 Plug.ends()
