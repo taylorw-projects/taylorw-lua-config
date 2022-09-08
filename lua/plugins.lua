@@ -5,7 +5,7 @@ Plug.begin()
 -- Baseline LSP config
 Plug("neovim/nvim-lspconfig", {
     config = function()
-        require("modules.lsp.config")
+       require("modules.lsp.config")
     end,
 })
 -- Autocompletion plugin
@@ -50,6 +50,12 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
+-- Jump to function locations within a file
+Plug("preservim/tagbar", {
+    config = function()
+        vim.keymap.set("n", "<leader>m", ":TagbarToggle<CR>")
+    end
+})
 -- Telescoping file finder
 Plug("nvim-telescope/telescope.nvim", {
     config = function()
@@ -115,12 +121,11 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- One dark theme and configuration
-Plug("shaunsingh/nord.nvim", {
+Plug("sainnhe/gruvbox-material", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.g.nord_italic = false
-        require("nord").set()
+        vim.cmd[[colorscheme gruvbox-material]]
     end
 })
 Plug.ends()
