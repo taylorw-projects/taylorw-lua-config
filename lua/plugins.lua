@@ -53,7 +53,8 @@ Plug("klen/nvim-test", {
 -- Jump to function locations within a file
 Plug("preservim/tagbar", {
     config = function()
-        vim.keymap.set("n", "<leader>m", ":TagbarToggle<CR>")
+        vim.keymap.set("n", "<leader>M", ":TagbarToggle<CR>")
+        vim.keymap.set("n", "<leader>m", ":TagbarOpenAutoClose<CR>")
     end
 })
 -- Telescoping file finder
@@ -91,7 +92,11 @@ Plug("vim-airline/vim-airline")
 -- Status bar themes
 Plug("vim-airline/vim-airline-themes")
 -- Auto-close parenthesis and scopes
-Plug("jiangmiao/auto-pairs")
+Plug("jiangmiao/auto-pairs", {
+    config = function()
+        vim.g.AutoPairsShortcutFastWrap = "<M-l>"
+    end
+})
 -- Async Lua support
 Plug("nvim-lua/plenary.nvim")
 -- Zen mode
