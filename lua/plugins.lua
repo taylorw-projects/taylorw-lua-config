@@ -5,7 +5,7 @@ Plug.begin()
 -- Baseline LSP config
 Plug("neovim/nvim-lspconfig", {
     config = function()
-       require("modules.lsp.config")
+        require("modules.lsp.config")
     end,
 })
 -- Autocompletion plugin
@@ -125,7 +125,7 @@ Plug("sainnhe/gruvbox-material", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd[[colorscheme gruvbox-material]]
+        vim.cmd [[colorscheme gruvbox-material]]
     end
 })
 Plug.ends()
