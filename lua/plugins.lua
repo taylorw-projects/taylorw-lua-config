@@ -128,12 +128,12 @@ Plug("saecki/crates.nvim", {
 })
 ---------------------------=== Themes ===---------------------------
 -- Nord theme and configuration
-Plug("shaunsingh/nord.nvim", {
+Plug("luisiacc/gruvbox-baby", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.g.nord_italic = false
-        require("nord").set()
+        vim.g.gruvbox_baby_telescope_theme = 1
+        vim.cmd[[colorscheme gruvbox-baby]]
     end
 })
 Plug.ends()
