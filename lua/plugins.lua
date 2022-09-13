@@ -126,14 +126,27 @@ Plug("saecki/crates.nvim", {
         require("crates").setup()
     end,
 })
+-- Rust Analyzer enable extra features
+Plug("simrat39/rust-tools.nvim")
 ---------------------------=== Themes ===---------------------------
+-- Gruvbox theme and configuration
+-- Plug("luisiacc/gruvbox-baby", {
+-- config = function()
+-- vim.opt.termguicolors = true
+-- vim.opt.background = "dark"
+-- vim.g.gruvbox_baby_telescope_theme = 0
+-- vim.g.gruvbox_baby_background_color = "dark"
+-- vim.cmd [[colorscheme gruvbox-baby]]
+-- end
+-- })
 -- Nord theme and configuration
-Plug("luisiacc/gruvbox-baby", {
+Plug("shaunsingh/nord.nvim", {
     config = function()
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.g.gruvbox_baby_telescope_theme = 1
-        vim.cmd[[colorscheme gruvbox-baby]]
+        vim.g.nord_contrast = true
+        vim.g.nord_italic = false
+        require("nord").set()
     end
 })
 Plug.ends()
