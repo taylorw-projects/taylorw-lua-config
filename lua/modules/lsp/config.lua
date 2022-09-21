@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd",telescope.lsp_definitions, bufopts)
+    vim.keymap.set("n", "gd", telescope.lsp_definitions, bufopts)
     vim.keymap.set("n", "gt", telescope.lsp_type_definitions, bufopts)
     vim.keymap.set("n", "gs", telescope.lsp_document_symbols, bufopts)
     vim.keymap.set("n", "gS", telescope.lsp_workspace_symbols, bufopts)
@@ -58,19 +58,6 @@ require("lspconfig")["tsserver"].setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
--- require("lspconfig")["rust_analyzer"].setup({
--- capabilities = capabilities,
--- on_attach = on_attach,
--- flags = lsp_flags,
--- Server-specific settings...
--- settings = {
--- ["rust-analyzer"] = {
--- checkOnSave = {
--- command = "clippy",
--- },
--- },
--- },
--- })
 require("lspconfig").sumneko_lua.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -111,3 +98,6 @@ require("rust-tools").setup({
         }
     }
 })
+
+-- autoformat on save
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]

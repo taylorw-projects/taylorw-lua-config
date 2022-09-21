@@ -1,5 +1,7 @@
 -- setup with default options
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+    sync_root_with_cwd = true
+})
 
 -- assign keybinds
 vim.keymap.set("n", "<leader>N", ":NvimTreeFocus<CR>")
@@ -8,4 +10,3 @@ vim.keymap.set("n", "<leader>nn", ":NvimTreeFocus<CR>")
 vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>")
 vim.keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>")
-

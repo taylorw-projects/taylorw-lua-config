@@ -129,24 +129,51 @@ Plug("saecki/crates.nvim", {
 -- Rust Analyzer enable extra features
 Plug("simrat39/rust-tools.nvim")
 ---------------------------=== Themes ===---------------------------
--- Gruvbox theme and configuration
--- Plug("luisiacc/gruvbox-baby", {
+-- Nord theme and configuration
+-- Plug("shaunsingh/nord.nvim", {
 -- config = function()
 -- vim.opt.termguicolors = true
 -- vim.opt.background = "dark"
--- vim.g.gruvbox_baby_telescope_theme = 0
--- vim.g.gruvbox_baby_background_color = "dark"
--- vim.cmd [[colorscheme gruvbox-baby]]
+-- vim.g.nord_italic = false
+-- require("nord").set()
 -- end
 -- })
--- Nord theme and configuration
-Plug("shaunsingh/nord.nvim", {
+-- VSCode theme and configuration
+-- Plug("Mofiqul/vscode.nvim", {
+-- config = function()
+-- vim.o.background = "dark"
+
+-- local c = require("vscode.colors")
+-- require('vscode').setup({
+-- Enable transparent background
+-- transparent = true,
+
+-- Enable italic comment
+-- italic_comments = true,
+
+-- Disable nvim-tree background color
+-- disable_nvimtree_bg = true,
+
+-- Override colors (see ./lua/vscode/colors.lua)
+-- color_overrides = {
+-- vscLineNumber = '#FFFFFF',
+-- },
+
+-- Override highlight groups (see ./lua/vscode/theme.lua)
+-- group_overrides = {
+-- use colors from this colorscheme by requiring vscode.colors!
+-- Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+-- }
+-- })
+-- end
+-- })
+-- Gruvbox theme and configuration
+Plug("luisiacc/gruvbox-baby", {
     config = function()
+        vim.cmd [[colorscheme gruvbox-baby]]
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.g.nord_contrast = true
-        vim.g.nord_italic = false
-        require("nord").set()
     end
 })
+
 Plug.ends()

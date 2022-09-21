@@ -12,4 +12,4 @@ vim.keymap.set("n", "<leader>h7", ":lua require(\"harpoon.ui\").nav_file(7)<CR>"
 vim.keymap.set("n", "<leader>h8", ":lua require(\"harpoon.ui\").nav_file(8)<CR>")
 vim.keymap.set("n", "<leader>h9", ":lua require(\"harpoon.ui\").nav_file(9)<CR>")
 vim.keymap.set("n", "<leader>h0", ":lua require(\"harpoon.ui\").nav_file(0)<CR>")
-vim.keymap.set("n", "<leader>ht", ":Telescope harpoon marks<CR>")
+vim.keymap.set("n", "<leader>ht", ":Telescope harpoon marks theme=dropdown<CR>")
