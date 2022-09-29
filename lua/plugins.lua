@@ -91,12 +91,6 @@ Plug("tmhedberg/matchit")
 Plug("vim-airline/vim-airline")
 -- Status bar themes
 Plug("vim-airline/vim-airline-themes")
--- Auto-close parenthesis and scopes
-Plug("jiangmiao/auto-pairs", {
-    config = function()
-        vim.g.AutoPairsShortcutFastWrap = "<M-l>"
-    end
-})
 -- Async Lua support
 Plug("nvim-lua/plenary.nvim")
 -- Zen mode
@@ -110,6 +104,8 @@ Plug("CRAG666/code_runner.nvim", {
         require("modules.utilities.coderunner")
     end
 })
+-- Auto close brackets on enter
+Plug("rstacruz/vim-closer")
 ---------------------------=== Git ===---------------------------
 -- Git integration
 Plug("tpope/vim-fugitive")
