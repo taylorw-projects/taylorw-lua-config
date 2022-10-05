@@ -104,8 +104,12 @@ Plug("CRAG666/code_runner.nvim", {
         require("modules.utilities.coderunner")
     end
 })
--- Auto close brackets on enter
-Plug("rstacruz/vim-closer")
+-- Auto close ({[
+Plug("jiangmiao/auto-pairs", {
+    config = function()
+        vim.g.AutoPairsShortcutFastWrap = "<M-l>"
+    end
+})
 ---------------------------=== Git ===---------------------------
 -- Git integration
 Plug("tpope/vim-fugitive")
@@ -122,15 +126,13 @@ Plug("saecki/crates.nvim", {
         require("crates").setup()
     end,
 })
--- Rust Analyzer enable extra features
-Plug("simrat39/rust-tools.nvim")
 ---------------------------=== Themes ===---------------------------
-Plug("folke/tokyonight.nvim", {
+Plug("luisiacc/gruvbox-baby", {
     config = function()
-        vim.cmd [[colorscheme tokyonight-night]]
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
+        vim.g.gruvbox_baby_telescope_theme = 1
+        vim.cmd [[colorscheme gruvbox-baby]]
     end
 })
-
 Plug.ends()

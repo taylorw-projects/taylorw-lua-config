@@ -1,11 +1,9 @@
 -- luasnip setup
 local luasnip = require("luasnip")
 
--- complete options
-vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
-
 -- nvim-cmp setup
 local cmp = require("cmp")
+
 cmp.setup({
     preselect = cmp.PreselectMode.None,
     snippet = {
