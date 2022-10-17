@@ -1,5 +1,5 @@
 -- Line numbers
-vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Cursor line highlighting
 vim.opt.cursorline = true
@@ -16,3 +16,8 @@ vim.opt.mouse = "a"
 
 -- Disable line wrapping
 vim.opt.wrap = false
+
+-- folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99

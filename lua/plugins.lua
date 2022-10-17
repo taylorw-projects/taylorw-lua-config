@@ -50,13 +50,6 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
--- Jump to function locations within a file
-Plug("preservim/tagbar", {
-    config = function()
-        vim.keymap.set("n", "<leader>M", ":TagbarToggle<CR>")
-        vim.keymap.set("n", "<leader>m", ":TagbarOpenAutoClose<CR>")
-    end
-})
 -- Telescoping file finder
 Plug("nvim-telescope/telescope.nvim", {
     config = function()
@@ -79,11 +72,13 @@ Plug("scrooloose/nerdcommenter", {
         vim.g.NERDTrimTrailingWhitespace = 1
     end,
 })
--- File tree navigation
-Plug("kyazdani42/nvim-tree.lua", {
+-- File Tree Devicons
+Plug("nvim-tree/nvim-web-devicons")
+-- File Tree
+Plug("nvim-tree/nvim-tree.lua", {
     config = function()
         require("modules.utilities.nvim_tree")
-    end,
+    end
 })
 -- Swap to beginning and end of block with %
 Plug("tmhedberg/matchit")
@@ -93,12 +88,7 @@ Plug("vim-airline/vim-airline")
 Plug("vim-airline/vim-airline-themes")
 -- Async Lua support
 Plug("nvim-lua/plenary.nvim")
--- Zen mode
-Plug("Pocco81/true-zen.nvim", {
-    config = function()
-        require("modules.utilities.truezen")
-    end
-})
+-- Code running
 Plug("CRAG666/code_runner.nvim", {
     config = function()
         require("modules.utilities.coderunner")
@@ -110,6 +100,8 @@ Plug("jiangmiao/auto-pairs", {
         vim.g.AutoPairsShortcutFastWrap = "<M-l>"
     end
 })
+-- Smooth Scroll (for my smooth brain)
+Plug("psliwka/vim-smoothie")
 ---------------------------=== Git ===---------------------------
 -- Git integration
 Plug("tpope/vim-fugitive")
