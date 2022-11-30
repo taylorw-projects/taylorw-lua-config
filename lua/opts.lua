@@ -1,5 +1,6 @@
 -- Line numbers
 vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- Cursor line highlighting
 vim.opt.cursorline = true

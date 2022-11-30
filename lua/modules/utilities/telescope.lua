@@ -38,12 +38,14 @@ require("telescope").setup({
 
 require("telescope").load_extension("harpoon")
 require("telescope").load_extension("zoxide")
-vim.keymap.set("n", "<leader>fz",
+vim.keymap.set("n", "<C-k>fz",
     "<cmd>lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_dropdown({}))<cr>")
-vim.keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-vim.keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+vim.keymap.set("n", "<C-k>fd",
+    "<cmd>lua require('telescope.builtin').git_status(require('telescope.themes').get_dropdown({}))<cr>")
+vim.keymap.set("n", "<C-k>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
+vim.keymap.set("n", "<C-k>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+vim.keymap.set("n", "<C-k>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+vim.keymap.set("n", "<C-k>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 
 -- TODO: Remove when Telescope fixes their shit
 vim.api.nvim_create_autocmd('BufRead', {

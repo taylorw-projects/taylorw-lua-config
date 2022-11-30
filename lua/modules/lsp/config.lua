@@ -57,7 +57,7 @@ require("lspconfig")["tsserver"].setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
-require("lspconfig").sumneko_lua.setup {
+require("lspconfig")["sumneko_lua"].setup {
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
@@ -83,18 +83,20 @@ require("lspconfig")["terraform_lsp"].setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
-require("lspconfig")["rust_analyzer"].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
-    settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy",
+require("rust-tools").setup({
+    server = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = lsp_flags,
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy",
+                }
             }
         }
     }
 })
 
 -- autoformat on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
