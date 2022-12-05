@@ -50,6 +50,12 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
+-- Line indent markers
+Plug("lukas-reineke/indent-blankline.nvim", {
+    config = function()
+        require("indent_blankline").setup()
+    end
+})
 -- Telescoping file finder
 Plug("nvim-telescope/telescope.nvim", {
     config = function()
@@ -70,8 +76,8 @@ Plug("scrooloose/nerdcommenter", {
         vim.g.NERDSpaceDelims = 1
         vim.g.NERDCompactSexyComs = 1
         vim.g.NERDTrimTrailingWhitespace = 1
-        vim.keymap.set("n", "<C-k>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
-        vim.keymap.set("v", "<C-k>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
+        vim.keymap.set("n", "<leader>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
+        vim.keymap.set("v", "<leader>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
     end,
 })
 -- File Tree Devicons
@@ -120,8 +126,6 @@ Plug("saecki/crates.nvim", {
         require("crates").setup()
     end,
 })
--- Rust tools for development
-Plug("simrat39/rust-tools.nvim")
 ---------------------------=== Themes ===---------------------------
 Plug("luisiacc/gruvbox-baby", {
     config = function()

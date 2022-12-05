@@ -83,16 +83,14 @@ require("lspconfig")["terraform_lsp"].setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
-require("rust-tools").setup({
-    server = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        flags = lsp_flags,
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy",
-                }
+require("lspconfig")["rust_analyzer"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy",
             }
         }
     }

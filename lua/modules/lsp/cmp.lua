@@ -38,11 +38,12 @@ cmp.setup({
             end
         end, { "i", "s" }),
     }),
+
     sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lsp_signature_help" },
         { name = "path" },
-        -- { name = "buffer" },
+        { name = "buffer" },
     },
 })
