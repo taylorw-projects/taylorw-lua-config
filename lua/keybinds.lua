@@ -21,17 +21,17 @@ vim.keymap.set("n", "<C-w>1", "<C-w>h:enew<cr><C-w>l<C-w>l:enew<cr><C-w>h")
 vim.keymap.set("n", "<leader>gb", ":e ~/.config/nvim/init.lua<cr>")
 
 -- Remap window navigation
--- vim.keymap.set("n", "<C-j>", "<C-W>j")
--- vim.keymap.set("n", "<C-k>", "<C-W>k")
--- vim.keymap.set("n", "<C-h>", "<C-W>h")
--- vim.keymap.set("n", "<C-l>", "<C-W>l")
+vim.keymap.set("n", "<C-j>", "<C-W>j")
+vim.keymap.set("n", "<C-k>", "<C-W>k")
+vim.keymap.set("n", "<C-h>", "<C-W>h")
+vim.keymap.set("n", "<C-l>", "<C-W>l")
 
 -- Remap window navigation terminal
-vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-W>j")
-vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-W>k")
-vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-W>h")
-vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-W>l")
-vim.keymap.set("t", "<C-q>", "<C-\\><C-N><C-W>c")
+vim.keymap.set("t", "C-j", "<C-\\><C-N><C-W>j")
+vim.keymap.set("t", "C-k", "<C-\\><C-N><C-W>k")
+vim.keymap.set("t", "C-h", "<C-\\><C-N><C-W>h")
+vim.keymap.set("t", "C-l", "<C-\\><C-N><C-W>l")
+vim.keymap.set("t", "C-q", "<C-\\><C-N><C-W>c")
 
 -- Copy, Cut, Paste to/from clipboard
 vim.keymap.set("v", "<space>y", '"*y')

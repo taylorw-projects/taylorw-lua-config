@@ -50,6 +50,12 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
+-- Startup screen
+Plug("goolord/alpha-nvim", {
+    config = function()
+        require("modules.utilities.alpha")
+    end
+})
 -- Line indent markers
 Plug("lukas-reineke/indent-blankline.nvim", {
     config = function()
@@ -127,11 +133,15 @@ Plug("saecki/crates.nvim", {
     end,
 })
 ---------------------------=== Themes ===---------------------------
-Plug("luisiacc/gruvbox-baby", {
+Plug("shaunsingh/nord.nvim", {
     config = function()
+        -- settings
         vim.opt.termguicolors = true
         vim.opt.background = "dark"
-        vim.cmd [[colorscheme gruvbox-baby]]
+        vim.g.nord_italic = false;
+        vim.g.nord_borders = true;
+        -- load the colorscheme
+        require("nord").set()
     end
 })
 
