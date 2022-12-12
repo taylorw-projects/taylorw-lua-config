@@ -130,19 +130,12 @@ Plug("lewis6991/gitsigns.nvim", {
 Plug("saecki/crates.nvim", {
     config = function()
         require("crates").setup()
-    end,
-})
----------------------------=== Themes ===---------------------------
-Plug("shaunsingh/nord.nvim", {
-    config = function()
-        -- settings
-        vim.opt.termguicolors = true
-        vim.opt.background = "dark"
-        vim.g.nord_italic = false;
-        vim.g.nord_borders = true;
-        -- load the colorscheme
-        require("nord").set()
     end
 })
-
+---------------------------=== Themes ===---------------------------
+Plug("tanvirtin/monokai.nvim", {
+    config = function()
+        require("modules.themes.monokai")
+    end
+})
 Plug.ends()
