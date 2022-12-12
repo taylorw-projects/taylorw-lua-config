@@ -96,10 +96,6 @@ Plug("nvim-tree/nvim-tree.lua", {
 })
 -- Swap to beginning and end of block with %
 Plug("tmhedberg/matchit")
--- Status bar
-Plug("vim-airline/vim-airline")
--- Status bar themes
-Plug("vim-airline/vim-airline-themes")
 -- Async Lua support
 Plug("nvim-lua/plenary.nvim")
 -- Code running
@@ -133,9 +129,9 @@ Plug("saecki/crates.nvim", {
     end
 })
 ---------------------------=== Themes ===---------------------------
-Plug("tanvirtin/monokai.nvim", {
+Plug("navarasu/onedark.nvim", {
     config = function()
-        require("modules.themes.monokai")
+        require("modules.themes.onedark")
     end
 })
 Plug.ends()

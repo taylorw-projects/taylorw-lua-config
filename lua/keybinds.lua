@@ -18,7 +18,7 @@ vim.keymap.set("n", "<C-w>4", "<C-W>v<C-W>s<C-W>l<C-W>s<C-W>h")
 vim.keymap.set("n", "<C-w>1", "<C-w>h:enew<cr><C-w>l<C-w>l:enew<cr><C-w>h")
 
 -- go to last buffer
-vim.keymap.set("n", "<leader>gb", ":e ~/.config/nvim/init.lua<cr>")
+vim.keymap.set("n", "gl", ":b#<cr>")
 
 -- Remap window navigation
 vim.keymap.set("n", "<C-j>", "<C-W>j")
