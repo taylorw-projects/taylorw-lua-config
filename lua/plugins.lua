@@ -109,6 +109,7 @@ Plug("jiangmiao/auto-pairs", {
     config = function()
         vim.g.AutoPairsShortcutFastWrap = "<M-l>"
         vim.keymap.set("n", "<M-f>", ":call AutoPairsJump()<cr>")
+        vim.keymap.set("v", "<M-f>", ":call AutoPairsJump()<cr>")
     end
 })
 -- Smooth Scroll (for my smooth brain)
