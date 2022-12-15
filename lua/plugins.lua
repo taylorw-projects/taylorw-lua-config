@@ -50,6 +50,12 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
+-- Smart Autotab
+Plug("NMAC427/guess-indent.nvim", {
+    config = function()
+        require("guess-indent").setup()
+    end,
+})
 -- Startup screen
 Plug("goolord/alpha-nvim", {
     config = function()
