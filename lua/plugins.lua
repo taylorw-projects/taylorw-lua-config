@@ -50,6 +50,11 @@ Plug("klen/nvim-test", {
     end,
 })
 ---------------------------=== Utilities ===---------------------------
+Plug("nvim-lualine/lualine.nvim", {
+    config = function()
+        require("modules.utilities.lualine")
+    end,
+})
 -- Smart Autotab
 Plug("NMAC427/guess-indent.nvim", {
     config = function()
@@ -118,8 +123,6 @@ Plug("jiangmiao/auto-pairs", {
         vim.keymap.set("v", "<M-f>", ":call AutoPairsJump()<cr>")
     end
 })
--- Smooth Scroll (for my smooth brain)
-Plug("psliwka/vim-smoothie")
 ---------------------------=== Git ===---------------------------
 -- Git integration
 Plug("tpope/vim-fugitive")
@@ -137,9 +140,11 @@ Plug("saecki/crates.nvim", {
     end
 })
 ---------------------------=== Themes ===---------------------------
-Plug("navarasu/onedark.nvim", {
+-- Theme extension plugin - realtime feedback features
+Plug("rktjmp/lush.nvim")
+Plug("mcchrish/zenbones.nvim", {
     config = function()
-        require("modules.themes.onedark")
+        require("modules.themes.zenbones")
     end
 })
 Plug.ends()

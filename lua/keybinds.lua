@@ -27,11 +27,11 @@ vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-l>", "<C-W>l")
 
 -- Remap window navigation terminal
-vim.keymap.set("t", "C-j", "<C-\\><C-N><C-W>j")
-vim.keymap.set("t", "C-k", "<C-\\><C-N><C-W>k")
-vim.keymap.set("t", "C-h", "<C-\\><C-N><C-W>h")
-vim.keymap.set("t", "C-l", "<C-\\><C-N><C-W>l")
-vim.keymap.set("t", "C-q", "<C-\\><C-N><C-W>c")
+vim.keymap.set("t", "<C-w>j", "<C-\\><C-N><C-W>j")
+vim.keymap.set("t", "<C-w>k", "<C-\\><C-N><C-W>k")
+vim.keymap.set("t", "<C-w>h", "<C-\\><C-N><C-W>h")
+vim.keymap.set("t", "<C-w>l", "<C-\\><C-N><C-W>l")
+vim.keymap.set("t", "<C-w>q", "<C-\\><C-N><C-W>c")
 
 -- Copy, Cut, Paste to/from clipboard
 vim.keymap.set("v", "<space>y", '"*y')
