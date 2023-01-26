@@ -33,11 +33,15 @@ require("telescope").setup({
         lsp_references        = {
             theme = "dropdown",
         },
+        projects              = {
+            theme = "dropdown",
+        },
     },
 })
 
 require("telescope").load_extension("harpoon")
 require("telescope").load_extension("zoxide")
+require("telescope").load_extension("projects")
 
 vim.keymap.set("n", "gz",
     "<cmd>lua require('telescope').extensions.zoxide.list(require('telescope.themes').get_dropdown({}))<cr>")

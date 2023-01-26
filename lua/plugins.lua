@@ -37,6 +37,7 @@ Plug("weilbith/nvim-code-action-menu", {
     end
 })
 ---------------------------=== TreeSitter ===---------------------------
+-- TreeSitter syntax highlighting
 Plug("nvim-treesitter/nvim-treesitter", {
     config = function()
         require("modules.treesitter.treesitter")
@@ -121,6 +122,11 @@ Plug("jiangmiao/auto-pairs", {
         vim.g.AutoPairsShortcutFastWrap = "<M-l>"
         vim.keymap.set("n", "<M-f>", ":call AutoPairsJump()<cr>")
         vim.keymap.set("v", "<M-f>", ":call AutoPairsJump()<cr>")
+    end
+})
+Plug("ahmedkhalf/project.nvim", {
+    config = function()
+        require("project_nvim").setup()
     end
 })
 ---------------------------=== Git ===---------------------------
