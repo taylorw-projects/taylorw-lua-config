@@ -142,9 +142,10 @@ Plug("saecki/crates.nvim", {
 ---------------------------=== Themes ===---------------------------
 -- Theme extension plugin - realtime feedback features
 Plug("rktjmp/lush.nvim")
-Plug("mcchrish/zenbones.nvim", {
+-- Plug("mcchrish/zenbones.nvim", {
+Plug("navarasu/onedark.nvim", {
     config = function()
-        require("modules.themes.zenbones")
+        require("modules.themes.onedark")
     end
 })
 Plug.ends()
