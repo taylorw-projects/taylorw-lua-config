@@ -1,35 +1,35 @@
-local Plug = require("utils.plug")
+local Plug = require('utils.plug')
 
 Plug.begin()
 ---------------------------=== Language Server Config ===---------------------------
 -- Baseline LSP config
-Plug("neovim/nvim-lspconfig", {
+Plug('neovim/nvim-lspconfig', {
     config = function()
-        require("modules.lsp.config")
+        require('modules.lsp.config')
     end,
 })
 -- Autocompletion plugin
-Plug("hrsh7th/nvim-cmp", {
+Plug('hrsh7th/nvim-cmp', {
     config = function()
-        require("modules.lsp.cmp")
+        require('modules.lsp.cmp')
     end,
 })
 -- LSP source for nvim-cmp
-Plug("hrsh7th/cmp-nvim-lsp")
+Plug('hrsh7th/cmp-nvim-lsp')
 -- Filesystem path completion for nvim-cmp
-Plug("hrsh7th/cmp-path")
+Plug('hrsh7th/cmp-path')
 -- Command mode completions for nvim-cmp
-Plug("hrsh7th/cmp-cmdline")
+Plug('hrsh7th/cmp-cmdline')
 -- Buffer word completions for nvim-cmp
-Plug("hrsh7th/cmp-buffer")
+Plug('hrsh7th/cmp-buffer')
 -- Snippets source for nvim-cmp
-Plug("saadparwaiz1/cmp_luasnip")
+Plug('saadparwaiz1/cmp_luasnip')
 -- Snippets plugin
-Plug("L3MON4D3/LuaSnip")
+Plug('L3MON4D3/LuaSnip')
 -- Function signature help
-Plug("hrsh7th/cmp-nvim-lsp-signature-help")
+Plug('hrsh7th/cmp-nvim-lsp-signature-help')
 -- Code Action menu
-Plug("weilbith/nvim-code-action-menu", {
+Plug('weilbith/nvim-code-action-menu', {
     config = function()
         vim.g.code_action_menu_window_border = 'single'
         vim.g.code_action_menu_show_diff = false
@@ -38,120 +38,116 @@ Plug("weilbith/nvim-code-action-menu", {
 })
 ---------------------------=== TreeSitter ===---------------------------
 -- TreeSitter syntax highlighting
-Plug("nvim-treesitter/nvim-treesitter", {
+Plug('nvim-treesitter/nvim-treesitter', {
     config = function()
-        require("modules.treesitter.treesitter")
+        require('modules.treesitter.treesitter')
     end
 })
 ---------------------------=== Tests ===---------------------------
 -- Utility for running tests
-Plug("klen/nvim-test", {
+Plug('klen/nvim-test', {
     config = function()
-        require("modules.tests.nvim_test")
+        require('modules.tests.nvim_test')
     end,
 })
 ---------------------------=== Utilities ===---------------------------
-Plug("nvim-lualine/lualine.nvim", {
+Plug('nvim-lualine/lualine.nvim', {
     config = function()
-        require("modules.utilities.lualine")
+        require('modules.utilities.lualine')
     end,
 })
 -- Smart Autotab
-Plug("NMAC427/guess-indent.nvim", {
+Plug('NMAC427/guess-indent.nvim', {
     config = function()
-        require("guess-indent").setup()
+        require('guess-indent').setup()
     end,
 })
 -- Startup screen
-Plug("goolord/alpha-nvim", {
+Plug('goolord/alpha-nvim', {
     config = function()
-        require("modules.utilities.alpha")
+        require('modules.utilities.alpha')
     end
 })
 -- Line indent markers
-Plug("lukas-reineke/indent-blankline.nvim", {
+Plug('lukas-reineke/indent-blankline.nvim', {
     config = function()
-        require("indent_blankline").setup()
+        require('indent_blankline').setup()
     end
 })
 -- Telescoping file finder
-Plug("nvim-telescope/telescope.nvim", {
+Plug('nvim-telescope/telescope.nvim', {
     config = function()
-        require("modules.utilities.telescope")
+        require('modules.utilities.telescope').setup()
     end,
 })
 -- Zoxide telescope plugin
-Plug("jvgrootveld/telescope-zoxide")
+Plug('jvgrootveld/telescope-zoxide')
 -- File marker and navigator
-Plug("ThePrimeagen/harpoon", {
-    config = function()
-        require("modules.utilities.harpoon")
-    end
-})
+Plug('ThePrimeagen/harpoon')
 -- Utility for commenting lines
-Plug("scrooloose/nerdcommenter", {
+Plug('scrooloose/nerdcommenter', {
     config = function()
         vim.g.NERDSpaceDelims = 1
         vim.g.NERDCompactSexyComs = 1
         vim.g.NERDTrimTrailingWhitespace = 1
-        vim.keymap.set("n", "<leader>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
-        vim.keymap.set("v", "<leader>c", ":call nerdcommenter#Comment(0, 'toggle')<C-m>")
+        vim.keymap.set('n', '<leader>c', ':call nerdcommenter#Comment(0, "toggle")<C-m>')
+        vim.keymap.set('v', '<leader>c', ':call nerdcommenter#Comment(0, "toggle")<C-m>')
     end,
 })
 -- File Tree Devicons
-Plug("nvim-tree/nvim-web-devicons")
+Plug('nvim-tree/nvim-web-devicons')
 -- File Tree
-Plug("nvim-tree/nvim-tree.lua", {
+Plug('nvim-tree/nvim-tree.lua', {
     config = function()
-        require("modules.utilities.nvim_tree")
+        require('modules.utilities.nvim_tree')
     end
 })
 -- Swap to beginning and end of block with %
-Plug("tmhedberg/matchit")
+Plug('tmhedberg/matchit')
 -- Async Lua support
-Plug("nvim-lua/plenary.nvim")
+Plug('nvim-lua/plenary.nvim')
 -- Code running
-Plug("CRAG666/code_runner.nvim", {
+Plug('CRAG666/code_runner.nvim', {
     config = function()
-        require("modules.utilities.coderunner")
+        require('modules.utilities.coderunner')
     end
 })
 -- Auto close ({[
-Plug("jiangmiao/auto-pairs", {
+Plug('jiangmiao/auto-pairs', {
     config = function()
-        vim.g.AutoPairsShortcutFastWrap = "<M-l>"
-        vim.keymap.set("n", "<M-f>", ":call AutoPairsJump()<cr>")
-        vim.keymap.set("v", "<M-f>", ":call AutoPairsJump()<cr>")
+        vim.g.AutoPairsShortcutFastWrap = '<M-l>'
+        vim.keymap.set('n', '<M-f>', ':call AutoPairsJump()<cr>')
+        vim.keymap.set('v', '<M-f>', ':call AutoPairsJump()<cr>')
     end
 })
-Plug("ahmedkhalf/project.nvim", {
+Plug('ahmedkhalf/project.nvim', {
     config = function()
-        require("project_nvim").setup()
+        require('project_nvim').setup()
     end
 })
 ---------------------------=== Git ===---------------------------
 -- Git integration
-Plug("tpope/vim-fugitive")
+Plug('tpope/vim-fugitive')
 -- Git changes in file
-Plug("lewis6991/gitsigns.nvim", {
+Plug('lewis6991/gitsigns.nvim', {
     config = function()
-        require("modules.git.gitsigns")
+        require('modules.git.gitsigns')
     end
 })
 ---------------------------=== Language Specific ===---------------------------
 -- Rust crate support in cargo.toml
-Plug("saecki/crates.nvim", {
+Plug('saecki/crates.nvim', {
     config = function()
-        require("crates").setup()
+        require('crates').setup()
     end
 })
 ---------------------------=== Themes ===---------------------------
 -- Theme extension plugin - realtime feedback features
-Plug("rktjmp/lush.nvim")
--- Plug("mcchrish/zenbones.nvim", {
-Plug("navarasu/onedark.nvim", {
+Plug('rktjmp/lush.nvim')
+-- Plug('mcchrish/zenbones.nvim', {
+Plug('navarasu/onedark.nvim', {
     config = function()
-        require("modules.themes.onedark")
+        require('modules.themes.onedark')
     end
 })
 Plug.ends()

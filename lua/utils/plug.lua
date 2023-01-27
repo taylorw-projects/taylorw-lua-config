@@ -10,7 +10,7 @@ local Plug = {
 	ends = function()
 		vim.fn["plug#end"]()
 
-		for i, config in pairs(configs.start) do
+		for _, config in pairs(configs.start) do
 			config()
 		end
 	end,

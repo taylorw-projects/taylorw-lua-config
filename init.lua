@@ -1,4 +1,4 @@
-require("keybinds")
+require("keybinds").setup()
 require("opts")
 require("plugins")
 require("neovide")
