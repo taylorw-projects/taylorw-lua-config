@@ -1,1 +1,7 @@
-require("onedark").load()
+M = {}
+
+M.setup = function()
+    require("onedark").load()
+end
+
+return M

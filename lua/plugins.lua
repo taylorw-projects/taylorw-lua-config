@@ -5,13 +5,13 @@ Plug.begin()
 -- Baseline LSP config
 Plug('neovim/nvim-lspconfig', {
     config = function()
-        require('modules.lsp.config')
+        require('modules.lsp.config').setup()
     end,
 })
 -- Autocompletion plugin
 Plug('hrsh7th/nvim-cmp', {
     config = function()
-        require('modules.lsp.cmp')
+        require('modules.lsp.cmp').setup()
     end,
 })
 -- LSP source for nvim-cmp
@@ -34,26 +34,27 @@ Plug('weilbith/nvim-code-action-menu', {
         vim.g.code_action_menu_window_border = 'single'
         vim.g.code_action_menu_show_diff = false
         vim.g.code_action_menu_show_details = false
-    end
+    end,
 })
 ---------------------------=== TreeSitter ===---------------------------
 -- TreeSitter syntax highlighting
 Plug('nvim-treesitter/nvim-treesitter', {
     config = function()
-        require('modules.treesitter.treesitter')
-    end
+        require('modules.treesitter.treesitter').setup()
+    end,
 })
 ---------------------------=== Tests ===---------------------------
 -- Utility for running tests
 Plug('klen/nvim-test', {
     config = function()
-        require('modules.tests.nvim_test')
+        require('modules.tests.nvim_test').setup()
+
     end,
 })
 ---------------------------=== Utilities ===---------------------------
 Plug('nvim-lualine/lualine.nvim', {
     config = function()
-        require('modules.utilities.lualine')
+        require('modules.utilities.lualine').setup()
     end,
 })
 -- Smart Autotab
@@ -65,14 +66,14 @@ Plug('NMAC427/guess-indent.nvim', {
 -- Startup screen
 Plug('goolord/alpha-nvim', {
     config = function()
-        require('modules.utilities.alpha')
-    end
+        require('modules.utilities.alpha').setup()
+    end,
 })
 -- Line indent markers
 Plug('lukas-reineke/indent-blankline.nvim', {
     config = function()
         require('indent_blankline').setup()
-    end
+    end,
 })
 -- Telescoping file finder
 Plug('nvim-telescope/telescope.nvim', {
@@ -85,13 +86,9 @@ Plug('jvgrootveld/telescope-zoxide')
 -- File marker and navigator
 Plug('ThePrimeagen/harpoon')
 -- Utility for commenting lines
-Plug('scrooloose/nerdcommenter', {
+Plug('terrortylor/nvim-comment', {
     config = function()
-        vim.g.NERDSpaceDelims = 1
-        vim.g.NERDCompactSexyComs = 1
-        vim.g.NERDTrimTrailingWhitespace = 1
-        vim.keymap.set('n', '<leader>c', ':call nerdcommenter#Comment(0, "toggle")<C-m>')
-        vim.keymap.set('v', '<leader>c', ':call nerdcommenter#Comment(0, "toggle")<C-m>')
+        require('modules.utilities.nvim_comment').setup()
     end,
 })
 -- File Tree Devicons
@@ -99,8 +96,8 @@ Plug('nvim-tree/nvim-web-devicons')
 -- File Tree
 Plug('nvim-tree/nvim-tree.lua', {
     config = function()
-        require('modules.utilities.nvim_tree')
-    end
+        require('modules.utilities.nvim_tree').setup()
+    end,
 })
 -- Swap to beginning and end of block with %
 Plug('tmhedberg/matchit')
@@ -109,21 +106,16 @@ Plug('nvim-lua/plenary.nvim')
 -- Code running
 Plug('CRAG666/code_runner.nvim', {
     config = function()
-        require('modules.utilities.coderunner')
-    end
+        require('modules.utilities.coderunner').setup()
+    end,
 })
 -- Auto close ({[
-Plug('jiangmiao/auto-pairs', {
-    config = function()
-        vim.g.AutoPairsShortcutFastWrap = '<M-l>'
-        vim.keymap.set('n', '<M-f>', ':call AutoPairsJump()<cr>')
-        vim.keymap.set('v', '<M-f>', ':call AutoPairsJump()<cr>')
-    end
-})
+Plug('jiangmiao/auto-pairs')
+-- Project management
 Plug('ahmedkhalf/project.nvim', {
     config = function()
-        require('project_nvim').setup()
-    end
+        require('modules.utilities.project').setup()
+    end,
 })
 ---------------------------=== Git ===---------------------------
 -- Git integration
@@ -131,15 +123,15 @@ Plug('tpope/vim-fugitive')
 -- Git changes in file
 Plug('lewis6991/gitsigns.nvim', {
     config = function()
-        require('modules.git.gitsigns')
-    end
+        require('modules.git.git_signs').setup()
+    end,
 })
 ---------------------------=== Language Specific ===---------------------------
 -- Rust crate support in cargo.toml
 Plug('saecki/crates.nvim', {
     config = function()
         require('crates').setup()
-    end
+    end,
 })
 ---------------------------=== Themes ===---------------------------
 -- Theme extension plugin - realtime feedback features
@@ -147,7 +139,7 @@ Plug('rktjmp/lush.nvim')
 -- Plug('mcchrish/zenbones.nvim', {
 Plug('navarasu/onedark.nvim', {
     config = function()
-        require('modules.themes.onedark')
-    end
+        require('modules.themes.onedark').setup()
+    end,
 })
 Plug.ends()

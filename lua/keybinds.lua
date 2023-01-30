@@ -1,4 +1,3 @@
-lo_clientcal
 M = {}
 local opts = { remap = true, silent = true }
 
@@ -97,6 +96,14 @@ M.setup = function()
     -- Telescope
     vim.keymap.set(
         'n',
+        '<space>.',
+        function()
+            require('telescope.builtin').find_files()
+        end,
+        opts
+    ) -- find files
+    vim.keymap.set(
+        'n',
         '<space>ff',
         function()
             require('telescope.builtin').find_files()
@@ -131,7 +138,8 @@ M.setup = function()
         'n',
         '<space>fz',
         function()
-            require('telescope.extensions')
+            require('telescope')
+                .extensions
                 .zoxide
                 .list(require('telescope.themes').get_dropdown())
         end,
@@ -161,7 +169,40 @@ M.setup = function()
         end,
         opts
     ) -- find harpoon marks
-
+    vim.keymap.set(
+        'n',
+        '<space>fp',
+        function()
+            require('telescope')
+                .extensions
+                .projects
+                .projects(require('telescope.themes').get_dropdown())
+        end,
+        opts
+    ) -- find projects
+    vim.keymap.set(
+        'n',
+        '<space>,',
+        function()
+            require('telescope')
+                .extensions
+                .projects
+                .projects(require('telescope.themes').get_dropdown())
+        end,
+        opts
+    ) -- find projects alternative keybind
+    vim.keymap.set(
+        'n',
+        '<space>cs',
+        require('telescope.builtin').lsp_document_symbols,
+        opts
+    ) -- search lsp document symbol
+    vim.keymap.set(
+        'n',
+        '<space>cS',
+        require('telescope.builtin').lsp_workspace_symbols,
+        opts
+    ) -- search lsp workspace symbols
     ---------------------------=== Code LSP (c) ===---------------------------
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- go to previous diagnostic
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- go to next diagnostic
@@ -172,8 +213,16 @@ M.setup = function()
     vim.keymap.set('v', '<C-space>d', '"*d') -- delete to clipboard
     vim.keymap.set('n', '<C-space>p', '"+p') -- paste from clipboard
 
+    ---------------------------=== AutoPairs (Meta key) ===---------------------------
+    vim.keymap.set({ 'n', 'v' }, '<M-f>', ':call AutoPairsJump()<cr>')
+    vim.g.AutoPairsShortcutFastWrap = '<M-l>'
+
     ---------------------------=== Editing (e) ===---------------------------
-    vim.keymap.set('n', '<C-space>es', function() vim.cmd('w') end, opts) -- save
+    vim.keymap.set('n', '<space>ew', function() vim.cmd('w') end, opts) -- save
+    vim.keymap.set('n', '<space>eW', function() vim.cmd('wa') end, opts)
+    vim.keymap.set('n', '<space>eq', function() vim.cmd('q') end, opts)
+    vim.keymap.set('n', '<space>eQ', function() vim.cmd('qa') end, opts)
+    vim.keymap.set('n', '<space>ewqa', function() vim.cmd('wqa') end, opts)
 
     ---------------------------=== Harpoon (h) ===---------------------------
     vim.keymap.set('n', '<space>ha', function() require('harpoon.mark').add_file() end, opts)
@@ -214,9 +263,18 @@ M.setup = function()
     vim.keymap.set('n', '<space>onf', function() vim.cmd('NvimTreeFindFile') end, opts)
     vim.keymap.set('n', '<space>onc', function() vim.cmd('NvimTreeCollapse') end, opts)
 
+    ---------------------------=== Project (p) ===---------------------------
+    vim.keymap.set(
+        'n',
+        '<space>p',
+        function()
+            require('telescope')
+                .extensions
+                .projects
+                .projects(require('telescope.themes').get_dropdown())
+        end
+    )
 end
-
-
 
 ---------------------------=== Code LSP on_attach (c) ===---------------------------
 M.lsp_on_attach = function(_, bufnr)
@@ -270,32 +328,33 @@ end
 ---------------------------=== Git (G) ===---------------------------
 M.gitsigns_on_attach = function(bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    local gs = require('gitsigns')
     -- general keybinds
-    vim.keymap.set({ 'n', 'v' }, '<space>Gs', require('gitsigns').stage_hunk, bufopts)
-    vim.keymap.set({ 'n', 'v' }, '<space>Gr', require('gitsigns').reset_hunk, bufopts)
-    vim.keymap.set('n', '<space>GS', require('gitsigns').stage_buffer, bufopts)
-    vim.keymap.set('n', '<space>Gu', require('gitsigns').undo_stage_hunk, bufopts)
-    vim.keymap.set('n', '<space>GR', require('gitsigns').reset_buffer, bufopts)
-    vim.keymap.set('n', '<space>Gp', require('gitsigns').preview_hunk, bufopts)
-    vim.keymap.set('n', '<space>Gb', function() require('gitsigns').blame_line { full = true } end, bufopts)
-    vim.keymap.set('n', '<space>Gb', require('gitsigns').toggle_current_line_blame, bufopts)
-    vim.keymap.set('n', '<space>Gd', require('gitsigns').diffthis, bufopts)
-    vim.keymap.set('n', '<space>GD', function() require('gitsigns').diffthis('~') end, bufopts)
-    vim.keymap.set('n', '<space>Gd', require('gitsigns').toggle_deleted, bufopts)
+    vim.keymap.set({ 'n', 'v' }, '<space>Gs', gs.stage_hunk, bufopts)
+    vim.keymap.set({ 'n', 'v' }, '<space>Gr', gs.reset_hunk, bufopts)
+    vim.keymap.set('n', '<space>GS', gs.stage_buffer, bufopts)
+    vim.keymap.set('n', '<space>Gu', gs.undo_stage_hunk, bufopts)
+    vim.keymap.set('n', '<space>GR', gs.reset_buffer, bufopts)
+    vim.keymap.set('n', '<space>Gp', gs.preview_hunk, bufopts)
+    vim.keymap.set('n', '<space>Gb', function() gs.blame_line { full = true } end, bufopts)
+    vim.keymap.set('n', '<space>Gb', gs.toggle_current_line_blame, bufopts)
+    vim.keymap.set('n', '<space>Gd', gs.diffthis, bufopts)
+    vim.keymap.set('n', '<space>GD', function() gs.diffthis('~') end, bufopts)
+    vim.keymap.set('n', '<space>Gd', gs.toggle_deleted, bufopts)
     -- navigation
     vim.keymap.set('n', ']c', function()
     end, { expr = true })
     vim.keymap.set('n', ']c', function()
         if vim.wo.diff then return ']c' end
-        vim.schedule(function() require('gitsigns').next_hunk() end)
+        vim.schedule(function() gs.next_hunk() end)
         return '<Ignore>'
     end, { expr = true })
     vim.keymap.set('n', '[c', function()
         if vim.wo.diff then return '[c' end
-        vim.schedule(function() require('gitsigns').prev_hunk() end)
+        vim.schedule(function() gs.prev_hunk() end)
         return '<Ignore>'
     end, { expr = true })
-    vim.keymap.set({ 'o', 'x' }, '<space>Gh', require('gitsigns').select_hunk, bufopts)
+    vim.keymap.set({ 'o', 'x' }, '<space>Gh', gs.select_hunk, bufopts)
 end
 
 return M
