@@ -191,18 +191,6 @@ M.setup = function()
         end,
         opts
     ) -- find projects alternative keybind
-    vim.keymap.set(
-        'n',
-        '<space>cs',
-        require('telescope.builtin').lsp_document_symbols,
-        opts
-    ) -- search lsp document symbol
-    vim.keymap.set(
-        'n',
-        '<space>cS',
-        require('telescope.builtin').lsp_workspace_symbols,
-        opts
-    ) -- search lsp workspace symbols
     ---------------------------=== Code LSP (c) ===---------------------------
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- go to previous diagnostic
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- go to next diagnostic
@@ -284,6 +272,8 @@ M.lsp_on_attach = function(_, bufnr)
     vim.keymap.set('n', '<space>ct', require('telescope.builtin').lsp_type_definitions, bufopts) -- go to type definitions
     vim.keymap.set('n', '<space>cs', require('telescope.builtin').lsp_document_symbols, bufopts) -- search lsp document symbol
     vim.keymap.set('n', '<space>cS', require('telescope.builtin').lsp_workspace_symbols, bufopts) -- search lsp workspace symbols
+    vim.keymap.set('n', '<space>fs', require('telescope.builtin').lsp_document_symbols, bufopts) -- search lsp document symbol (alternate keybind)
+    vim.keymap.set('n', '<space>fS', require('telescope.builtin').lsp_workspace_symbols, bufopts) -- search lsp workspace symbols (alternate keybind)
     vim.keymap.set('n', '<space>ch', vim.lsp.buf.hover, bufopts) -- show help dialog
     vim.keymap.set('n', '<space>cH', vim.lsp.buf.signature_help, bufopts) -- show signature help
     vim.keymap.set('n', '<space>ci', require('telescope.builtin').lsp_implementations, bufopts) -- search implementations
