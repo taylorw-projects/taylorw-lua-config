@@ -4,6 +4,7 @@ local opts = { remap = true, silent = true }
 M.setup = function()
     ---------------------------=== Window Pane Management (<space>w) ===---------------------------
     -- standard functionality
+    vim.keymap.set('n', '<space>ww', function() vim.cmd.wincmd('w') end, opts) -- move left
     vim.keymap.set('n', '<space>wh', function() vim.cmd.wincmd('h') end, opts) -- move left
     vim.keymap.set('n', '<space>wj', function() vim.cmd.wincmd('j') end, opts) -- move down
     vim.keymap.set('n', '<space>wk', function() vim.cmd.wincmd('k') end, opts) -- move up
@@ -16,11 +17,11 @@ M.setup = function()
     vim.keymap.set('n', '<space>wo', function() vim.cmd.wincmd('o') end, opts) -- delete other panes
     vim.keymap.set('n', '<space>w=', function() vim.cmd.wincmd('=') end, opts) -- set panes to equal width
     -- Terminal
-    vim.keymap.set('t', '<C-space>wh', function() vim.cmd.wincmd('h') end, opts) -- terminal move left
-    vim.keymap.set('t', '<C-space>wj', function() vim.cmd.wincmd('j') end, opts) -- terminal move down
-    vim.keymap.set('t', '<C-space>wk', function() vim.cmd.wincmd('k') end, opts) -- terminal move up
-    vim.keymap.set('t', '<C-space>wl', function() vim.cmd.wincmd('l') end, opts) -- terminal move right
-    vim.keymap.set('t', '<C-space>wc', function() vim.cmd.wincmd('c') end, opts) -- terminal close current pane
+    vim.keymap.set('t', '<C-h>', function() vim.cmd.wincmd('h') end, opts) -- terminal move left
+    vim.keymap.set('t', '<C-j>', function() vim.cmd.wincmd('j') end, opts) -- terminal move down
+    vim.keymap.set('t', '<C-k>', function() vim.cmd.wincmd('k') end, opts) -- terminal move up
+    vim.keymap.set('t', '<C-l>', function() vim.cmd.wincmd('l') end, opts) -- terminal move right
+    vim.keymap.set('t', '<C-c>', function() vim.cmd.wincmd('c') end, opts) -- terminal close current pane
     -- nonstandard functionality
     vim.keymap.set(
         'n',
@@ -70,7 +71,8 @@ M.setup = function()
             vim.cmd.resize(20)
             vim.cmd.setlocal('nonumber')
             vim.cmd('startinsert')
-        end
+        end,
+        opts
     ) -- open terminal in horizontal split
     vim.keymap.set(
         'n',
@@ -81,9 +83,17 @@ M.setup = function()
             vim.cmd('ter')
             vim.cmd.setlocal('nonumber')
             vim.cmd('startinsert')
-        end
+        end,
+        opts
     ) -- open terminal in vertical split
-
+    vim.keymap.set(
+        'n',
+        '<space>wz',
+        function()
+            vim.cmd('NoNeckPain')
+        end,
+        opts
+    ) -- NoNeckPain mode
     ---------------------------=== Going places (<space>g) ===---------------------------
     vim.keymap.set('n', '<space>gV', function() vim.cmd.e('~/.config/nvim/init.lua') end, opts) -- go to init.lua
     vim.keymap.set('n', '<space>gP', function() vim.cmd.e('~/.config/nvim/lua/plugins.lua') end, opts) -- go to plugins.lua
@@ -91,14 +101,20 @@ M.setup = function()
         opts) -- go to lua folder
     vim.keymap.set('n', '<space>gN', function() vim.cmd.e('~/.config/nvim') vim.cmd.cd('~/.config/nvim') end, opts) -- go to neovim folder
     vim.keymap.set('n', '<space>gl', function() vim.cmd.b('#') end, opts) -- go to last buffer
+    vim.keymap.set('n', '<space>/', function() vim.cmd('Ex') end, opts) -- Open up file browser
 
     ---------------------------=== Fuzzy Finding (<space>f) ===---------------------------
+
+    local telescope = require('telescope')
+    local builtins = require('telescope.builtin')
+    local themes = require('telescope.themes')
+
     -- Telescope
     vim.keymap.set(
         'n',
         '<space>.',
         function()
-            require('telescope.builtin').find_files()
+            builtins.find_files()
         end,
         opts
     ) -- find files
@@ -106,7 +122,7 @@ M.setup = function()
         'n',
         '<space>ff',
         function()
-            require('telescope.builtin').find_files()
+            builtins.find_files()
         end,
         opts
     ) -- find files
@@ -114,7 +130,7 @@ M.setup = function()
         'n',
         '<space>fg',
         function()
-            require('telescope.builtin').live_grep()
+            builtins.live_grep()
         end,
         opts
     ) -- find grep
@@ -122,7 +138,7 @@ M.setup = function()
         'n',
         '<space>fb',
         function()
-            require('telescope.builtin').buffers()
+            builtins.buffers()
         end,
         opts
     ) -- find buffers
@@ -130,7 +146,7 @@ M.setup = function()
         'n',
         '<space>fH',
         function()
-            require('telescope.builtin').help_tags()
+            builtins.help_tags()
         end,
         opts
     ) -- find help tags
@@ -138,10 +154,10 @@ M.setup = function()
         'n',
         '<space>fz',
         function()
-            require('telescope')
+            telescope
                 .extensions
                 .zoxide
-                .list(require('telescope.themes').get_dropdown())
+                .list(themes.get_dropdown())
         end,
         opts
     ) -- find zoxide
@@ -149,7 +165,7 @@ M.setup = function()
         'n',
         '<space>fG',
         function()
-            require('telescope.builtin').git_status()
+            builtins.git_status()
         end,
         opts
     ) -- find git status
@@ -157,7 +173,7 @@ M.setup = function()
         'n',
         '<space>fd',
         function()
-            require('telescope.builtin').diagnostics()
+            builtins.diagnostics()
         end,
         opts
     ) -- find error diagnostics
@@ -173,24 +189,45 @@ M.setup = function()
         'n',
         '<space>fp',
         function()
-            require('telescope')
+            telescope
                 .extensions
                 .projects
-                .projects(require('telescope.themes').get_dropdown())
+                .projects(themes.get_dropdown())
         end,
         opts
     ) -- find projects
     vim.keymap.set(
         'n',
-        '<space>,',
+        '<space>;',
         function()
-            require('telescope')
+            telescope
                 .extensions
                 .projects
-                .projects(require('telescope.themes').get_dropdown())
+                .projects(themes.get_dropdown())
         end,
         opts
     ) -- find projects alternative keybind
+    vim.keymap.set(
+        'n',
+        '<space>fF',
+        function()
+            telescope
+                .extensions
+                .file_browser
+                .file_browser(themes.get_dropdown())
+        end
+    )
+    vim.keymap.set(
+        'n',
+        '<space>,',
+        function()
+            telescope
+                .extensions
+                .file_browser
+                .file_browser(themes.get_dropdown())
+        end,
+        opts
+    ) -- file browesr alternative keybind
     ---------------------------=== Code LSP (c) ===---------------------------
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- go to previous diagnostic
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- go to next diagnostic
@@ -256,10 +293,10 @@ M.setup = function()
         'n',
         '<space>p',
         function()
-            require('telescope')
+            telescope
                 .extensions
                 .projects
-                .projects(require('telescope.themes').get_dropdown())
+                .projects(themes.get_dropdown())
         end
     )
 end
@@ -327,7 +364,6 @@ M.gitsigns_on_attach = function(bufnr)
     vim.keymap.set('n', '<space>GR', gs.reset_buffer, bufopts)
     vim.keymap.set('n', '<space>Gp', gs.preview_hunk, bufopts)
     vim.keymap.set('n', '<space>Gb', function() gs.blame_line { full = true } end, bufopts)
-    vim.keymap.set('n', '<space>Gb', gs.toggle_current_line_blame, bufopts)
     vim.keymap.set('n', '<space>Gd', gs.diffthis, bufopts)
     vim.keymap.set('n', '<space>GD', function() gs.diffthis('~') end, bufopts)
     vim.keymap.set('n', '<space>Gd', gs.toggle_deleted, bufopts)

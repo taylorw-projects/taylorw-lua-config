@@ -78,11 +78,13 @@ Plug('lukas-reineke/indent-blankline.nvim', {
 -- Telescoping file finder
 Plug('nvim-telescope/telescope.nvim', {
     config = function()
-        require('modules.utilities.telescope').setup()
+        require('modules.utilities.telescope_config').setup()
     end,
 })
 -- Zoxide telescope plugin
 Plug('jvgrootveld/telescope-zoxide')
+-- Telescope file browsing
+Plug('nvim-telescope/telescope-file-browser.nvim')
 -- File marker and navigator
 Plug('ThePrimeagen/harpoon')
 -- Utility for commenting lines
@@ -117,6 +119,13 @@ Plug('ahmedkhalf/project.nvim', {
         require('modules.utilities.project').setup()
     end,
 })
+Plug('shortcuts/no-neck-pain.nvim', {
+    config = function()
+        require('no-neck-pain').setup({
+            width = 150,
+        })
+    end
+})
 ---------------------------=== Git ===---------------------------
 -- Git integration
 Plug('tpope/vim-fugitive')
@@ -142,4 +151,7 @@ Plug('navarasu/onedark.nvim', {
         require('modules.themes.onedark').setup()
     end,
 })
+---------------------------=== Games ===---------------------------
+-- Tetris, because why not
+Plug('alec-gibson/nvim-tetris')
 Plug.ends()

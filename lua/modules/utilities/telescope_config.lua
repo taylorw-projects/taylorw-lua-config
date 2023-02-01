@@ -47,6 +47,7 @@ M.setup = function()
     require('telescope').load_extension('harpoon')
     require('telescope').load_extension('zoxide')
     require('telescope').load_extension('projects')
+    require('telescope').load_extension('file_browser')
 end
 
 return M

@@ -1,5 +1,5 @@
-require("keybinds").setup()
 require("opts")
 require("plugins")
 require("neovide")
 require("autocmd")
+require("keybinds").setup()
