@@ -1,6 +1,13 @@
 local M = {}
 
+
 M.setup = function()
+    require('telescope').load_extension('harpoon')
+    require('telescope').load_extension('zoxide')
+    require('telescope').load_extension('projects')
+
+    local fb_actions = require('telescope').extensions.file_browser.actions
+
     require('telescope').setup({
         pickers = {
             find_files            = {
@@ -43,11 +50,21 @@ M.setup = function()
                 theme = 'dropdown'
             }
         },
+        extensions = {
+            file_browser = {
+                mappings = {
+                    ['i'] = {
+                        ['C-w'] = fb_actions.change_cwd,
+                        ['C-t'] = fb_actions.goto_cwd
+                    },
+                    ['n'] = {
+                        ['w'] = fb_actions.change_cwd,
+                        ['t'] = fb_actions.goto_cwd
+                    }
+                }
+            }
+        }
     })
-    require('telescope').load_extension('harpoon')
-    require('telescope').load_extension('zoxide')
-    require('telescope').load_extension('projects')
-    require('telescope').load_extension('file_browser')
 end
 
 return M

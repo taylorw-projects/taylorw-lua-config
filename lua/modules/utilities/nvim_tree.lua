@@ -1,11 +1,8 @@
 -- setup with default options
-M = {}
+local M = {}
 
 M.setup = function()
-    require("nvim-tree").setup({
-        sync_root_with_cwd = true,
-        auto_reload_on_write = true,
-    })
+    require("nvim-tree").setup()
 end
 
 return M

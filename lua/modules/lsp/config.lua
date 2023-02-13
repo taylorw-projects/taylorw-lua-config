@@ -1,7 +1,13 @@
-M = {}
+local M = {}
 
 M.setup = function()
     local on_attach = require('keybinds').lsp_on_attach
+
+    local rust_on_attach = function(_, bufnr)
+        on_attach(_, bufnr)
+        vim.keymap.set('n', '<space>ccf', function() vim.cmd [[!cargo clippy --fix --allow-dirty]] end,
+            { noremap = true, silent = true, buffer = bufnr })
+    end
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -57,13 +63,17 @@ M.setup = function()
     })
     require('lspconfig')['rust_analyzer'].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = rust_on_attach,
         flags = lsp_flags,
         settings = {
             ['rust-analyzer'] = {
                 checkOnSave = {
-                    command = 'clippy',
-                }
+                    command = 'clippy'
+                },
+                cargo = {
+                    allFeatures = true,
+                    features = { 'with-eventbridge', 'with-async-graphql' },
+                },
             }
         }
     })

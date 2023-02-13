@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.setup = function()
     require("code_runner").setup({

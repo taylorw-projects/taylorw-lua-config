@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 local opts = { remap = true, silent = true }
 
 M.setup = function()
@@ -16,6 +16,10 @@ M.setup = function()
     vim.keymap.set('n', '<space>wc', function() vim.cmd.wincmd('c') end, opts) -- close current pane
     vim.keymap.set('n', '<space>wo', function() vim.cmd.wincmd('o') end, opts) -- delete other panes
     vim.keymap.set('n', '<space>w=', function() vim.cmd.wincmd('=') end, opts) -- set panes to equal width
+    vim.keymap.set('n', '<C-h>', function() vim.cmd.wincmd('h') end, opts)
+    vim.keymap.set('n', '<C-j>', function() vim.cmd.wincmd('j') end, opts)
+    vim.keymap.set('n', '<C-k>', function() vim.cmd.wincmd('k') end, opts)
+    vim.keymap.set('n', '<C-l>', function() vim.cmd.wincmd('l') end, opts)
     -- Terminal
     vim.keymap.set('t', '<C-h>', function() vim.cmd.wincmd('h') end, opts) -- terminal move left
     vim.keymap.set('t', '<C-j>', function() vim.cmd.wincmd('j') end, opts) -- terminal move down
@@ -122,7 +126,7 @@ M.setup = function()
         'n',
         '<space>ff',
         function()
-            builtins.find_files()
+            builtins.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
         end,
         opts
     ) -- find files
@@ -248,6 +252,7 @@ M.setup = function()
     vim.keymap.set('n', '<space>eq', function() vim.cmd('q') end, opts)
     vim.keymap.set('n', '<space>eQ', function() vim.cmd('qa') end, opts)
     vim.keymap.set('n', '<space>ewqa', function() vim.cmd('wqa') end, opts)
+    vim.keymap.set('n', '<space>eb', function() vim.cmd('bd') end, opts)
 
     ---------------------------=== Harpoon (h) ===---------------------------
     vim.keymap.set('n', '<space>ha', function() require('harpoon.mark').add_file() end, opts)
@@ -256,14 +261,14 @@ M.setup = function()
     vim.keymap.set('n', '<space>hp', function() require('harpoon.ui').nav_prev() end, opts)
     vim.keymap.set('n', '<space>h1', function() require('harpoon.ui').nav_file(1) end, opts)
     vim.keymap.set('n', '<space>h2', function() require('harpoon.ui').nav_file(2) end, opts)
-    vim.keymap.set('n', '<space>h3', function() require('harppon.ui').nav_file(3) end, opts)
-    vim.keymap.set('n', '<space>h4', function() require('harppon.ui').nav_file(4) end, opts)
-    vim.keymap.set('n', '<space>h5', function() require('harppon.ui').nav_file(5) end, opts)
-    vim.keymap.set('n', '<space>h6', function() require('harppon.ui').nav_file(6) end, opts)
-    vim.keymap.set('n', '<space>h7', function() require('harppon.ui').nav_file(7) end, opts)
-    vim.keymap.set('n', '<space>h8', function() require('harppon.ui').nav_file(8) end, opts)
-    vim.keymap.set('n', '<space>h9', function() require('harppon.ui').nav_file(9) end, opts)
-    vim.keymap.set('n', '<space>h0', function() require('harppon.ui').nav_file(0) end, opts)
+    vim.keymap.set('n', '<space>h3', function() require('harpoon.ui').nav_file(3) end, opts)
+    vim.keymap.set('n', '<space>h4', function() require('harpoon.ui').nav_file(4) end, opts)
+    vim.keymap.set('n', '<space>h5', function() require('harpoon.ui').nav_file(5) end, opts)
+    vim.keymap.set('n', '<space>h6', function() require('harpoon.ui').nav_file(6) end, opts)
+    vim.keymap.set('n', '<space>h7', function() require('harpoon.ui').nav_file(7) end, opts)
+    vim.keymap.set('n', '<space>h8', function() require('harpoon.ui').nav_file(8) end, opts)
+    vim.keymap.set('n', '<space>h9', function() require('harpoon.ui').nav_file(9) end, opts)
+    vim.keymap.set('n', '<space>h0', function() require('harpoon.ui').nav_file(0) end, opts)
 
     ---------------------------=== Test (t) ===---------------------------
     vim.keymap.set('n', '<space>ts', function() vim.cmd('TestSuite') end, opts)
@@ -287,6 +292,7 @@ M.setup = function()
     vim.keymap.set('n', '<space>onn', function() vim.cmd('NvimTreeFocus') end, opts)
     vim.keymap.set('n', '<space>onf', function() vim.cmd('NvimTreeFindFile') end, opts)
     vim.keymap.set('n', '<space>onc', function() vim.cmd('NvimTreeCollapse') end, opts)
+    vim.keymap.set('n', '<space>\'', function() vim.cmd('NvimTreeToggle') end, opts)
 
     ---------------------------=== Project (p) ===---------------------------
     vim.keymap.set(
@@ -350,7 +356,6 @@ M.lsp_on_attach = function(_, bufnr)
     vim.keymap.set('n', '<space>ca', function() vim.cmd('CodeActionMenu') end, bufopts) -- open CodeActionMenu
     vim.keymap.set('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, bufopts) -- format code
 end
-
 
 ---------------------------=== Git (G) ===---------------------------
 M.gitsigns_on_attach = function(bufnr)

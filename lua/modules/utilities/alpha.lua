@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.setup = function()
 
@@ -35,7 +35,8 @@ M.setup = function()
     }
 
     dashboard.section.buttons.val = {
-        dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+        dashboard.button("f", "  Find file",
+            "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>"),
         dashboard.button("p", "  Find project",
             "<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown({}))<cr>"),
         dashboard.button("z", "  Find with zoxide",
