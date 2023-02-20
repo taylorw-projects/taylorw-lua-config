@@ -35,7 +35,7 @@ M.setup = function()
         on_attach = on_attach,
         flags = lsp_flags,
     })
-    require('lspconfig')['sumneko_lua'].setup {
+    require('lspconfig')['lua_ls'].setup {
         capabilities = capabilities,
         on_attach = on_attach,
         flags = lsp_flags,

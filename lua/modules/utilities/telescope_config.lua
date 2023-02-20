@@ -9,6 +9,13 @@ M.setup = function()
     local fb_actions = require('telescope').extensions.file_browser.actions
 
     require('telescope').setup({
+        defaults = {
+            borderchars = {
+                prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+                results = { " " },
+                preview = { " " },
+            }
+        },
         pickers = {
             find_files            = {
                 theme = 'dropdown',

@@ -146,9 +146,14 @@ Plug('saecki/crates.nvim', {
 -- Theme extension plugin - realtime feedback features
 Plug('rktjmp/lush.nvim')
 -- Plug('mcchrish/zenbones.nvim', {
-Plug('navarasu/onedark.nvim', {
+-- Plug('navarasu/onedark.nvim', {
+--     config = function()
+--         require('modules.themes.onedark').setup()
+--     end,
+-- })
+Plug('luisiacc/gruvbox-baby', {
     config = function()
-        require('modules.themes.onedark').setup()
+        require('modules.themes.gruvbox').setup()
     end,
 })
 ---------------------------=== Games ===---------------------------
